@@ -11,7 +11,9 @@ export default class List extends Component {
     errorMsg:''
   }
 
+  //每次接收到新的参数时，重新发送请求
   async componentWillReceiveProps({keyWord}){
+    //发请求之前，更新状态为loading
     this.setState({
       isFirstView:false,
       users:[],
@@ -20,7 +22,9 @@ export default class List extends Component {
     })
     const URl = `https://api.github.com/search/users?q=${keyWord}`
     try{
+      //使用axios发送请求
       let response = await axios.get(URl)
+      //从请求数据中获取指定的数据
       let users = response.data.items.map((item)=>{
           return {
             userAvataUrl:item.avatar_url,
@@ -28,6 +32,7 @@ export default class List extends Component {
             userName:item.login,
           }
       })
+      //若请求成功，维护数据到状态中
       this.setState({
         isFirstView:false,
         users,
@@ -36,6 +41,7 @@ export default class List extends Component {
       })
     }
     catch(err){
+      //若请求失败，维护错误到状态中
       this.setState({
         isFirstView:false,
         users:[],
@@ -65,6 +71,7 @@ export default class List extends Component {
   }
 
   render() {
+    //如下代码为条件渲染
     let {isFirstView,users,loading,errorMsg} = this.state
     if(isFirstView){
       return <h2>请在上方输入用户名，随后点击搜索</h2>

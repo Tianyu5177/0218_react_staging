@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 export default class Search extends Component {
 
   search =()=>{
+    //从App获取更新关键词的方法
     let {setKeyWord} = this.props
     //1.获取用户输入
     let keyWord = this.refs.keyWord.value.trim()
