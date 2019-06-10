@@ -1,43 +1,16 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 
 export default class Search extends Component {
 
   search =()=>{
-    //获取到更新App状态的方法
-    let {updateAppState} = this.props
+    let {setKeyWord} = this.props
     //1.获取用户输入
-    let keyWord = this.refs.keyWord.value
-    //2.发送请求
-    updateAppState({
-      isFirstView:false,
-      users:[],
-      loading:true,
-      errorMsg:''
-    })
-    const URl = `https://api.github.com/search/users?q=${keyWord}`
-    axios.get(URl)
-      .then((response)=>{
-        console.log(response)
-        updateAppState({
-          isFirstView:false,
-          users:response.data.items,
-          loading:false,
-          errorMsg:''
-        })
-      })
-      .catch((err)=>{
-        console.log(err)
-        updateAppState({
-          isFirstView:false,
-          users:[],
-          loading:false,
-          errorMsg:err.message
-        })
-      })
-
+    let keyWord = this.refs.keyWord.value.trim()
+    //2.给List传递搜索的关键词
+    setKeyWord(keyWord)
+    //3.清空用户输入
+    this.refs.keyWord.value = ''
   }
-
 
   render() {
     return (

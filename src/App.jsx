@@ -5,27 +5,18 @@ import List from './components/list/List'
 export default class App extends Component{
 
   state = {
-    isFirstView:true,
-    users:[],
-    loading:false,
-    errorMsg:''
+    keyWord:'' //当前keyWord是供List组件使用的
   }
 
-  updateAppState = ({isFirstView,users,loading,errorMsg})=>{
-    this.setState({
-      isFirstView,
-      users,
-      loading,
-      errorMsg,
-    })
-
+  setKeyWord = (keyWord)=>{
+    this.setState({keyWord})
   }
 
   render(){
     return (
       <div className="container">
-        <Search updateAppState={this.updateAppState}/>
-        <List appState={this.state}/>
+        <Search setKeyWord={this.setKeyWord}/>
+        <List keyWord={this.state.keyWord}/>
       </div>
     )
   }
