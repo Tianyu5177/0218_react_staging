@@ -22,10 +22,23 @@ export default class HomeMessage extends Component {
     },1000)
   }
 
+  pushShow =(path)=>{
+    this.props.history.push(path)
+  }
+
+  replaceShow =(path)=>{
+    this.props.history.replace(path)
+  }
+
+  back =()=>{
+    this.props.history.goBack()
+  }
+
   render() {
     let {messages} = this.state
     return (
       <div>
+        <br/>
         <ul>
           {
             messages.map((item)=>{
@@ -33,12 +46,15 @@ export default class HomeMessage extends Component {
                 <li key={item.id}>
                   {/*路由跳转*/}
                   <Link to={`/home/message/message_detail/${item.id}`}>{item.content}</Link>
+                  ------<button onClick={()=>this.pushShow(`/home/message/message_detail/${item.id}`)}>点我push查看</button>
+                  ------<button onClick={()=>this.replaceShow(`/home/message/message_detail/${item.id}`)}>点我replace查看</button>
                 </li>
               )
             })
           }
         </ul>
         <hr/>
+        <button onClick={this.back}>后退</button>
         {/*注册路由*/}
         <Route path="/home/message/message_detail/:id" component={HomeMessageDetail}/>
       </div>

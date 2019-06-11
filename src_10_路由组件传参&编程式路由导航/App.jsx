@@ -19,8 +19,8 @@ export default class App extends Component{
           <div className="col-xs-2 col-xs-offset-2">
             <div className="list-group">
               {/*路由跳转*/}
-              <MyNavLink to="/about">About</MyNavLink>
-              <MyNavLink to="/home">Home</MyNavLink>
+              <MyNavLink to="/about" replace>About</MyNavLink>
+              <MyNavLink to="/home" replace>Home</MyNavLink>
 
               {/*如下代码是普通传统按标签跳转，页面刷新，需要有多个页面配合*/}
               {/*<a className="list-group-item active" href="./about.html">About</a>
