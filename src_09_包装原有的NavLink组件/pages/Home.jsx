@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Route,Redirect,Switch} from 'react-router-dom'
+import {NavLink,Route,Redirect,Switch} from 'react-router-dom'
 import HomeNews from './HomeNews'
 import HomeMessage from './HomeMessage'
 import MyNavLink from '../components/MyNavLink'

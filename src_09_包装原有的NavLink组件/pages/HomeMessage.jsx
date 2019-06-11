@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import {Link,Route} from 'react-router-dom'
-import HomeMessageDetail from './HomeMessageDetail'
 
 export default class HomeMessage extends Component {
 
@@ -9,7 +7,6 @@ export default class HomeMessage extends Component {
   }
 
   componentDidMount(){
-    //console.log('HomeMessage-----componentDidMount')
     setTimeout(()=>{
       this.setState({
         messages:[
@@ -31,16 +28,13 @@ export default class HomeMessage extends Component {
             messages.map((item)=>{
               return (
                 <li key={item.id}>
-                  {/*路由跳转*/}
-                  <Link to={`/home/message/message_detail/${item.id}`}>{item.content}</Link>
+                  <a href="/home/message/1">{item.content}</a>
                 </li>
               )
             })
           }
         </ul>
         <hr/>
-        {/*注册路由*/}
-        <Route path="/home/message/message_detail/:id" component={HomeMessageDetail}/>
       </div>
     )
   }
