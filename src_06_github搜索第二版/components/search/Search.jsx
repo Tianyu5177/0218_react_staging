@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
-import PubSub from 'pubsub-js'
 
 export default class Search extends Component {
 
   search =()=>{
+    //从App获取更新关键词的方法
+    let {setKeyWord} = this.props
     //1.获取用户输入
     let keyWord = this.refs.keyWord.value.trim()
-    //2.消息发布（）
-    PubSub.publish('searchUser',keyWord)
+    //2.给List传递搜索的关键词
+    setKeyWord(keyWord)
     //3.清空用户输入
     this.refs.keyWord.value = ''
   }

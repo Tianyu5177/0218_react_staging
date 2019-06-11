@@ -168,4 +168,35 @@
   	// 数组中常见声明式方法
   		map() / forEach() / find() / findIndex() / reduce()
   		arr.find(item => item>3)
+  		
+## 17. 说说react应用中如何与后台通信?
+    1). 通过ajax请求与后台交互, 但react本身并不包含ajax语法封装
+    2). 可以使用axios/fetch来发送ajax请求
+    3). 发请求的时机/位置:
+       a. 初始化请求: componentDidMount()
+       b. 用户操作后请求: 事件回调函数或相关位置 
+       
+## 18. 项目开发中常用的ES6语法有哪些？
+    定义变量/常量: const/let
+        解构赋值: let {a, b} = this.props / import {aa} from 'xxx' / function f ({name}) {}
+        对象的简洁表达: {a, b, c () {}}
+        箭头函数: 
+           组件的自定义方法: xxx = () => {}
+           匿名函数作为实参
+           优点:
+              简洁
+              没有自己的this,使用引用this查找的是外部this
+        扩展运算符: ...
+        类: class/extends/constructor/super
+        ES6模块化: export/default/import
+        异步: promise, async/await
+
+## 19. 说说你理解的async与await
+    1). 作用?
+        简化pormise的使用(不用再使用then()/catch()来指定成功或失败的回调函数)
+        以同步编码的方式实现异步流程(没有回调函数)
+    2). 哪里使用await?
+        在返回promise对象的表达式左侧, 为了直接得到异步返回的结果, 而不是promsie对象
+    3). 哪里使用async?
+        使用了await的函数定义左侧
  
